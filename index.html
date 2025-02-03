@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <table>
+        <caption>My Library</caption>
+        <thead>
+          <tr>
+            <th>Stt.</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Status</th>
+            <th>Func</th>
+          </tr>
+        </thead>
+        <tbody class="table-body">
+          
+        </tbody>
+      </table>
+      <dialog id="favDialog">
+        <form method="dialog">
+            <label for="title">Title: </label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="author">Author: </label>
+            <input type="text" id="author" name="author" required>
+
+            <label for="pages">Pages: </label>
+            <input type="number" id="pages" name="pages" required>
+
+            <label for="read">Read: </label>
+            <select name="read" id="read">
+                <option value="read">Read</option>
+                <option value="not read yet" selected>Not read yet</option>
+            </select>
+        </form>
+        <div>
+            <button class="btn" id="closeBtn">Close</button>
+            <button class="btn" id="confirmBtn">Confirm</button>
+        </div>
+      </dialog>
+      <button id="addBook" class="btn">Add a new book</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
