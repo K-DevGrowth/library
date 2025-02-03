@@ -34,9 +34,9 @@ const displayLibrary = () => {
       <td>${book.author}</td>
       <td>${book.pages}</td>
       <td>
-      ${book.read === "read" ? 
-        `<button class="status btn">read</button>` :
-        `<button class="status btn active">not read yet</button>`}
+      ${book.read === "Read" ? 
+        `<button class="status btn">Read</button>` :
+        `<button class="status btn active">Not read yet</button>`}
       </td>
       <td>
        <button class="delete btn" 
@@ -77,12 +77,12 @@ tableBody.addEventListener("click", (e) => {
 
 tableBody.addEventListener("click", (e) => {
   if (e.target.classList.contains("status")) {
-    e.target.textContent === "read" ?
-      e.target.textContent = "not read yet" :
-      e.target.textContent = "read";
+    e.target.textContent === "Read" ?
+      e.target.textContent = "Not read yet" :
+      e.target.textContent = "Read";
   }
   if (!e.target.classList.contains("active") &&
-      e.target.textContent !== "read") {
+      e.target.textContent !== "Read") {
     e.target.classList.add("active")
   }
   else {
@@ -90,6 +90,6 @@ tableBody.addEventListener("click", (e) => {
   }
 })
 
-addBookToLibrary("Atomic Habits", "James Clear", 388, "read");
-addBookToLibrary("Deep Work", "Cal Newport", 356, "not read yet");
+addBookToLibrary("Atomic Habits", "James Clear", 388, "Read");
+addBookToLibrary("Deep Work", "Cal Newport", 356, "Not read yet");
 displayLibrary();
