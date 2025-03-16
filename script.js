@@ -9,6 +9,7 @@ const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const read = document.querySelector("#read");
+const errorMessages = document.querySelectorAll("input + span");
 
 const myLibrary = [];
 
@@ -30,13 +31,13 @@ const displayLibrary = () => {
 
   myLibrary.forEach((book, index) => {
     const row = document.createElement("tr");
-    row.innerHTML = 
+    row.innerHTML =
       `<th>${index + 1}</th>
       <td>${book.title}</td>
       <td>${book.author}</td>
       <td>${book.pages}</td>
       <td>
-      ${book.read === "Read" ? 
+      ${book.read === "Read" ?
         `<button class="status btn">Read</button>` :
         `<button class="status btn active">Not read yet</button>`}
       </td>
@@ -56,16 +57,25 @@ const reset = () => {
 }
 
 addBookBtn.addEventListener("click", () => favDialog.showModal());
+
 closeBtn.addEventListener("click", () => favDialog.close());
+
 confirmBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  if (title.value && author.value && pages.value) {
-    addBookToLibrary(title.value, author.value, pages.value, read.value);
-    reset();
-  }
-  else {
-    alert("You must enter the value!");
-  }  
+  const inputs = [title, author, pages];
+
+  inputs.forEach((input, index) => {
+    errorMessages[index].textContent = "";
+
+    if (input.validity.valueMissing) {
+      errorMessages[index].textContent = "Missing value";
+    }
+  });
+
+  if (!inputs.every((input) => input.validity.valid)) return;
+
+  addBookToLibrary(title.value, author.value, pages.value, read.value);
+  reset();
   displayLibrary();
 });
 
@@ -84,7 +94,7 @@ tableBody.addEventListener("click", (e) => {
       e.target.textContent = "Read";
   }
   if (!e.target.classList.contains("active") &&
-      e.target.textContent !== "Read") {
+    e.target.textContent !== "Read") {
     e.target.classList.add("active")
   }
   else {

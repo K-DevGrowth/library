@@ -56,7 +56,7 @@ caption {
     font-weight: 900;
 }
 
-input {
+input, span {
     width: 100%;
     display: block;
 }
@@ -96,4 +96,11 @@ dialog .btn {
 
 input, option {
     padding: 5px;
+}
+
+.error {
+    background-color: #F23D3D;
+    color: #f2f2f2;
+    border-radius: 0 0 10px 10px;
+    padding: 0 10px;
 }
